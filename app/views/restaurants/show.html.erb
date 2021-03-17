@@ -1,0 +1,31 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><%= link_to "Yelp", restaurants_path%></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+      <%= link_to "Add a new restaurant", new_restaurant_path, class: "btn btn-secondary my-2 my-sm-0" %>
+</nav>
+<div class="container">
+  <br>
+  <h1> <strong><%= @restaurant.name %></strong></h1>
+  <br>
+  <br>
+  <h3> <%= @restaurant.category %></h3>
+  <h3> <%= @restaurant.address %></h3>
+  <h3><%= @restaurant.phone_number %></h3>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item mt-3 mb-3"><%= review.rating %>.  <%= review.content %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-secondary"%>
+<%= link_to "Go back to home page", restaurants_path, class: "btn btn-secondary"%>
+
+</div>
